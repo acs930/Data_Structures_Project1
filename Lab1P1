@@ -1,0 +1,89 @@
+/*
+ * Adam Smith
+ * Comp 285
+ * Lab 1 problem 1 and 2
+ * 9/21/12
+ */
+
+import java.util.*;
+public class P1 {
+
+  /**
+	 * @param args
+	 */
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+		Scanner input = new Scanner(System.in); //declare new input device
+		
+		//inputs and outputs
+		int userInput = 0;
+		int change = 0;
+		int quarters = 0;
+		int dimes = 0;
+		int nickels = 0;
+		int pennies = 0;
+		
+		//explain to user the situation
+		System.out.println("You walk up to a vending machine, with a dollar in hand. ");
+		System.out.println("You see that every item in the machine is at least 25 cents but no more than 100 cents.");
+		System.out.println("All the items end in a multple of 5 and a small sign on the side of the machine says,\n\"ANY INCORRECT NUMBER ENTERED WILL BE CATASTROPHIC TO YOUR HEALTH.\"");
+		System.out.println("OH AND YOU CAN ONLY ENTER THE COST OF THE ITEM YOU WANT AND NO DECIMALS!");
+		System.out.println("You feed the machine your dollar and stare at the keypad poised to enter your selection.");
+		
+		//has user enter a number
+		userInput = input.nextInt();
+		
+		//determines if number entered is within acceptable parameters
+		if((userInput >= 25) && (userInput <= 100))
+		{
+			if(((userInput % 5) == 0) && (userInput != 100))
+			{
+				System.out.print("You enter in ");
+				System.out.print(userInput);
+				System.out.println(" and hear a series of happy sounding beeps,\nthe pair of socks you wanted drops out the chute on the bottom.");
+				System.out.print("There's a clanking sound from the change compartment and grab the ");
+		//calculates the change for the user
+				change = 100 - userInput;
+				quarters = change/25;
+				dimes = (change - (quarters*25))/10;
+				nickels = (change - (quarters*25)- ( dimes* 10))/5;
+				pennies = (change - (quarters*25)- ( dimes* 10) - (nickels*5));
+		//output for correct input	
+				System.out.println(change + " cents made up of: ");
+				System.out.print(quarters +" quarters\n" + dimes + " dimes\n" + nickels + " nickels\n" + pennies + " pennies\n");
+				System.out.println("You walk away with a smile on your face.");
+
+				
+			}
+			
+			else if(userInput == 100)
+			{
+		//special output for max value
+				System.out.println("You enter in one hundred cents and recieve the gold plated chocolate bar.");
+				System.out.println("You turn around and happily walk away.");
+			}
+			
+			else
+			{
+		//output for a value not divisible by 5
+				System.out.print("You enter in ");
+				System.out.print(userInput);
+				System.out.println(" and an alarm goes off alerting you that there was an invalid selection,\nitem not divisible by 5.");
+				System.out.println("You hear a growling and the vending machine opens from the center and swallows you whole.");
+			}	
+		}
+		
+		else
+		{
+		//output for value over 100 or under 25
+			System.out.print("You enter in ");
+			System.out.print(userInput);
+			System.out.println(" and an alarm goes off alerting you that there was an invalid selection,\nnot in acceptable range.");
+			System.out.println("You hear a growling and the vending machine opens from the center and swallows you whole.");
+		}
+		
+		
+	}
+
+}
