@@ -1,0 +1,51 @@
+// Adam Smith
+
+
+import java.util.Scanner;
+
+
+public abstract class Region {
+
+  
+	private String regionName;
+	
+	public Region(){   //constructor
+		regionName = "No name";
+	}
+	
+	public Region(String newName)  //constructor assigning a name
+	{
+		regionName = newName;
+	}
+	
+	public String getRegName()  //getname
+	{
+		return regionName;
+	}
+	
+	public void setRegName(String newName)
+	{
+		regionName = newName;
+	}
+	
+	
+	public String toString()
+	{
+		return ("Name: " + getRegName() + ".");
+	}
+	
+	public void readInput()
+	{
+		String userReg;
+		Scanner input = new Scanner(System.in);
+		System.out.println("Please enter the Region's name.");
+		userReg = input.nextLine();
+		regionName = userReg;
+	}
+	public abstract int getPop();
+	public abstract double getArea();
+	public abstract void fillRegionArray();
+	
+	
+			
+}
